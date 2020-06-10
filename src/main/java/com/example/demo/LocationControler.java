@@ -24,8 +24,18 @@ public class LocationControler {
         return locationservice.getLocation(id);
     }
 
-    @RequestMapping(value="locations",method=RequestMethod.POST)
+    @RequestMapping(value="/locations",method=RequestMethod.POST)
     public void addLocations(@RequestBody Location location){
         locationservice.addLocation(location);
+    }
+
+    @RequestMapping(value="/locations/{id}",method=RequestMethod.PUT)
+    public void updateLocation(@RequestBody Location location,@PathVariable String id){
+        locationservice.updateLocation(id,location);
+    }
+
+    @RequestMapping(value="/locations/{id}",method=RequestMethod.DELETE)
+    public void deleteLocation(@PathVariable String id){
+        locationservice.deleteLocation(id);
     }
 }

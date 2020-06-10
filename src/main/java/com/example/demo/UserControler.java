@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @RestController
@@ -30,5 +32,16 @@ public class UserControler {
     public void addUser(@RequestBody User user){
         userservice.addUser(user);
     }
+
+    @RequestMapping(value="/users",method=RequestMethod.PUT)
+    public void updateUser(@RequestBody User user,@PathVariable String id){
+        userservice.updateUser(id,user);
+    }
+
+    @RequestMapping(value="/uses/{id}", method=RequestMethod.DELETE)
+    public void deleteUser(@PathVariable String id) {
+        userservice.deleteUser(id);
+    }
+    
     
 }

@@ -23,4 +23,18 @@ public class LocationService {
     public void addLocation(Location location){
         locations.add(location);
     }
+
+    public void updateLocation(String id,Location location){
+        for(int i=0;i<locations.size();i++){
+            Location aux = locations.get(i);
+            if(aux.getId().equals(id)){
+                locations.set(i, location);
+                break;
+            }
+        }
+    }
+
+    public void deleteLocation(String id){
+        locations.removeIf(l -> l.getId().equals(id));
+    }
 }

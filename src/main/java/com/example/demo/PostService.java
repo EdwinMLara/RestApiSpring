@@ -26,4 +26,18 @@ public class PostService {
     public void addPost(Post post){
         posts.add(post);
     }
+
+    public void updatePost(String id, Post post){
+        for(int i=0;i<posts.size();i++){
+            Post aux = posts.get(i);
+            if(aux.getId().equals(id)){
+                posts.set(i, post);
+                break;
+            }
+        }
+    }
+
+    public void deletePost(String id){
+        posts.removeIf(p->p.getId().equals(id));
+    }
 }
