@@ -27,6 +27,7 @@ public class PostControler {
     
     @RequestMapping(value="/posts",method=RequestMethod.POST)
     public void addPost(@RequestBody Post post){
+        System.out.println(post.getDetails());
         postservice.addPost(post);
     }
 
