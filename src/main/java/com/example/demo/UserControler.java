@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
+import java.util.Optional;
 
 
 
@@ -23,7 +24,7 @@ public class UserControler {
     }
 
     @RequestMapping(value="/users/{id}")
-    public User getUser(@PathVariable String id){
+    public Optional<User> getUser(@PathVariable String id){
         return userservice.getUser(id);
     }
 

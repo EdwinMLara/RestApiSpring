@@ -1,42 +1,37 @@
 package com.example.demo;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
-    User u1 = new User("u1","jany","Lawrence", new Location("l1","lagos"),"jany@gmail.com");
-    User u2 = new User("u2","jadon","Millis", new Location("l2","Asaba"),"jadon@gmail.com");
-    List <User> users = Arrays.asList(u1,u2);
-    List <User> users2 = new ArrayList<>(users);
+
+    @Autowired
+    private UserRepository userrepository;
     
     public List<User> getAllUsers(){
-        return users2;
+        List<User> users = new ArrayList<>();
+        userrepository.findAll().forEach(users::add);
+        return users;
     }
 
-    public User getUser(String id){
-        User user = users2.stream().filter(u -> id.equals(u.getId())).findFirst().orElse(null);
-        return user;
+    public Optional<User> getUser(String id){
+        return userrepository.findById(id);
     }
 
     public void addUser(User user){
-        users2.add(user);
+        userrepository.save(user);
     }
 
     public void updateUser(String id,User user){
-        for (int i=0;i<users2.size();i++){
-            User aux = users2.get(i);
-            if(aux.getId().equals(id)){
-                users2.set(i, user);
-                break;
-            }
-        }
+        userrepository.save(user);
     }
 
     public void deleteUser(String id){
-        users2.removeIf(u->u.getId().equals(id));
+        userrepository.deleteById(id);
     }
 }

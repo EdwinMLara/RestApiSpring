@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -21,23 +22,23 @@ public class PostControler {
     }
     
     @RequestMapping(value="/posts/{id}")
-    public Post getPost(@PathVariable String id){
+    public Optional<Post> getPost(@PathVariable final String id) {
         return postservice.getPost(id);
     }
-    
-    @RequestMapping(value="/posts",method=RequestMethod.POST)
-    public void addPost(@RequestBody Post post){
+
+    @RequestMapping(value = "/posts", method = RequestMethod.POST)
+    public void addPost(@RequestBody final Post post) {
         System.out.println(post.getDetails());
         postservice.addPost(post);
     }
 
-    @RequestMapping(value="/posts",method=RequestMethod.PUT)
-    public void updatePost(@RequestBody Post post,@PathVariable String id){
-        postservice.updatePost(id,post);
+    @RequestMapping(value = "/posts", method = RequestMethod.PUT)
+    public void updatePost(@RequestBody final Post post, @PathVariable final String id) {
+        postservice.updatePost(id, post);
     }
 
-    @RequestMapping(value="/posts/{id}",method=RequestMethod.DELETE)
-    public void deletePost(@PathVariable String id){
+    @RequestMapping(value = "/posts/{id}", method = RequestMethod.DELETE)
+    public void deletePost(@PathVariable final String id) {
         postservice.deletePost(id);
     }
 }
