@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,22 +21,22 @@ public class LocationControler {
     }
 
     @RequestMapping(value="/locations/{id}")
-    public Location getLocation(@PathVariable String id){
+    public Optional<Location> getLocation(@PathVariable final String id) {
         return locationservice.getLocation(id);
     }
 
-    @RequestMapping(value="/locations",method=RequestMethod.POST)
-    public void addLocations(@RequestBody Location location){
+    @RequestMapping(value = "/locations", method = RequestMethod.POST)
+    public void addLocations(@RequestBody final Location location) {
         locationservice.addLocation(location);
     }
 
-    @RequestMapping(value="/locations/{id}",method=RequestMethod.PUT)
-    public void updateLocation(@RequestBody Location location,@PathVariable String id){
-        locationservice.updateLocation(id,location);
+    @RequestMapping(value = "/locations/{id}", method = RequestMethod.PUT)
+    public void updateLocation(@RequestBody final Location location, @PathVariable final String id) {
+        locationservice.updateLocation(id, location);
     }
 
-    @RequestMapping(value="/locations/{id}",method=RequestMethod.DELETE)
-    public void deleteLocation(@PathVariable String id){
+    @RequestMapping(value = "/locations/{id}", method = RequestMethod.DELETE)
+    public void deleteLocation(@PathVariable final String id) {
         locationservice.deleteLocation(id);
     }
 }
