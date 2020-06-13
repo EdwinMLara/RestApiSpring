@@ -2,6 +2,7 @@ package com.example.demo;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Post {
@@ -9,8 +10,10 @@ public class Post {
     @Id
     private String id;
     private String postdate;
-    private User user;
     private String details;
+
+    @ManyToOne
+    private User user;
 
     public Post(){
 

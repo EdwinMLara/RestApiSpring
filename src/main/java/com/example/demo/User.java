@@ -2,6 +2,7 @@ package com.example.demo;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class User {
@@ -10,8 +11,10 @@ public class User {
     private String id;
     private String firstname;
     private String lastname;
-    private Location location;
     private String email;
+    
+    @ManyToOne
+    private Location location;
 
     public User(){    
     }
