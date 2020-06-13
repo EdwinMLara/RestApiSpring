@@ -10,16 +10,16 @@ public interface StudentRepository extends CrudRepository<Student,String>{
      * jpa obteniendo diferentes resultados
      */
 
-    @Query("SELECT t.name FROM Student t where t.id = :id")
+    @Query(value="SELECT t.name FROM Student t where t.id = :id",nativeQuery=true) 
     public Optional<String> findNameById(@Param("id") String id);
 
-    @Query("SELECT * FROM Student t where t.id = :id")
+    @Query(value="SELECT * FROM Student t where t.id = :id",nativeQuery=true)
     public Optional<Student> findById(@Param("id")String id);
 
-    @Query("SELECT * FROM Student t where t.id = ?1 AND t.department = ?2")
+    @Query(value="SELECT * FROM Student t where t.id = ?1 AND t.department = ?2",nativeQuery = true)
     public Optional<Student> findByNameAndDepartment(String name, String department);
 
-    @Query("SELECT * FROM Student t where t.name = %?1%")
+    @Query(value="SELECT * FROM Student t where t.name = %?1%",nativeQuery = true)
     public Optional<Student> findByCriteria(String criteria);
     
 }
