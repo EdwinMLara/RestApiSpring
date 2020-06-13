@@ -39,4 +39,9 @@ public class LocationControler {
     public void deleteLocation(@PathVariable final String id) {
         locationservice.deleteLocation(id);
     }
+
+    @RequestMapping(value="/locations/name/{name}")
+    public List<Location> getLocationsByName(@PathVariable final String name){
+        return locationservice.getLocationsByName(name);
+    }
 }

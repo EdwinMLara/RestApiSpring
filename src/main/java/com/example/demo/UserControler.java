@@ -24,22 +24,22 @@ public class UserControler {
     }
 
     @RequestMapping(value="/users/{id}")
-    public Optional<User> getUser(@PathVariable String id){
+    public Optional<User> getUser(@PathVariable final String id) {
         return userservice.getUser(id);
     }
 
-    @RequestMapping(value="/users",method=RequestMethod.POST)
-    public void addUser(@RequestBody User user){
+    @RequestMapping(value = "/users", method = RequestMethod.POST)
+    public void addUser(@RequestBody final User user) {
         userservice.addUser(user);
     }
 
-    @RequestMapping(value="/users",method=RequestMethod.PUT)
-    public void updateUser(@RequestBody User user,@PathVariable String id){
-        userservice.updateUser(id,user);
+    @RequestMapping(value = "/users", method = RequestMethod.PUT)
+    public void updateUser(@RequestBody final User user, @PathVariable final String id) {
+        userservice.updateUser(id, user);
     }
 
-    @RequestMapping(value="/uses/{id}", method=RequestMethod.DELETE)
-    public void deleteUser(@PathVariable String id) {
+    @RequestMapping(value = "/uses/{id}", method = RequestMethod.DELETE)
+    public void deleteUser(@PathVariable final String id) {
         userservice.deleteUser(id);
     }
     
