@@ -19,6 +19,12 @@ public class LocationService {
         return locations;
     }
 
+    public List<Location> getLocationsByName(String name){
+        List<Location> locations = new ArrayList<>();
+        locationrespository.findByName(name).forEach(locations::add);
+        return locations;
+    }
+
     public Optional<Location> getLocation(String id) {
         return locationrespository.findById(id);
     }

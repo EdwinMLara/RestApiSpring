@@ -19,6 +19,12 @@ public class PostService {
         return posts;
     }
 
+    public List<Post> getPostByUserName(String userId){
+        List<Post> posts = new ArrayList<>();
+        postrepository.findByUserId(userId).forEach(posts::add);
+        return posts;
+    }
+
     public Optional<Post> getPost(final String id) {
         return postrepository.findById(id);
     }

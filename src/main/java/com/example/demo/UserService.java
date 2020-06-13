@@ -14,24 +14,30 @@ public class UserService {
     private UserRepository userrepository;
     
     public List<User> getAllUsers(){
-        List<User> users = new ArrayList<>();
+        final List<User> users = new ArrayList<>();
         userrepository.findAll().forEach(users::add);
         return users;
     }
 
-    public Optional<User> getUser(String id){
+    public List<User> getUserByLocations(String locationId){
+        final List<User> users = new ArrayList<>();
+        userrepository.findByLocationId(locationId).forEach(users::add);
+        return users;
+    }
+
+    public Optional<User> getUser(final String id) {
         return userrepository.findById(id);
     }
 
-    public void addUser(User user){
+    public void addUser(final User user) {
         userrepository.save(user);
     }
 
-    public void updateUser(String id,User user){
+    public void updateUser(final String id, final User user) {
         userrepository.save(user);
     }
 
-    public void deleteUser(String id){
+    public void deleteUser(final String id) {
         userrepository.deleteById(id);
     }
 }
