@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Location {
+public class Location extends AudiTable<String>{
     @Id
     private String id;
     private String name;

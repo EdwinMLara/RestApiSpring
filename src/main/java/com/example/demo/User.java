@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class User {
+public class User extends AudiTable<String>{
 
     @Id
     private String id;
