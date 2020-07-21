@@ -13,28 +13,28 @@ import java.util.Optional;
 
 
 @RestController
-public class UserControler {
+public class UsuarioControler {
     
     @Autowired
-    private UserService userservice;
+    private UsuarioService userservice;
 
     @RequestMapping(value="/users", method=RequestMethod.GET)
-    public List<User> getAllUsers() {
+    public List<Usuario> getAllUsers() {
         return userservice.getAllUsers();
     }
 
     @RequestMapping(value="/users/{id}")
-    public Optional<User> getUser(@PathVariable final String id) {
+    public Optional<Usuario> getUser(@PathVariable final String id) {
         return userservice.getUser(id);
     }
 
     @RequestMapping(value = "/users", method = RequestMethod.POST)
-    public void addUser(@RequestBody final User user) {
+    public void addUser(@RequestBody final Usuario user) {
         userservice.addUser(user);
     }
 
-    @RequestMapping(value = "/users", method = RequestMethod.PUT)
-    public void updateUser(@RequestBody final User user, @PathVariable final String id) {
+    @RequestMapping(value = "/users/{id}", method = RequestMethod.PUT)
+    public void updateUser(@RequestBody final Usuario user, @PathVariable final String id) {
         userservice.updateUser(id, user);
     }
 

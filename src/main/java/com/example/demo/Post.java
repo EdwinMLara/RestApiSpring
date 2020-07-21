@@ -14,13 +14,13 @@ public class Post extends AudiTable<String>{
     private String details;
 
     @ManyToOne
-    private User user;
+    private Usuario user;
 
     public Post(){
 
     }
 
-    public Post(String id,String postdate,User user,String details){
+    public Post(String id,String postdate,Usuario user,String details){
         this.id = id;
         this.postdate = postdate;
         this.user = user;
@@ -43,11 +43,11 @@ public class Post extends AudiTable<String>{
         this.postdate = postdate;
     }
 
-    public User getUser(){
+    public Usuario getUser(){
         return this.user;
     }
 
-    public void setUser(User user){
+    public void setUser(Usuario user){
         this.user = user;
     }
 
